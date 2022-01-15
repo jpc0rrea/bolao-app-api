@@ -24,4 +24,7 @@ COPY --from=builder /usr/app/package*.json ./
 COPY --from=builder /usr/app/dist ./dist
 COPY --from=builder /usr/app/prisma ./prisma
 
+EXPOSE 3333
+EXPOSE 8080
+
 CMD ["npm", "run", "prod:migrate:start"]
