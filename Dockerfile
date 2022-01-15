@@ -3,6 +3,8 @@ FROM node AS builder
 # Create app directory
 WORKDIR /usr/app
 
+ENV PORT=8080
+
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 COPY package*.json ./
 COPY prisma ./prisma
@@ -22,5 +24,6 @@ COPY --from=builder /usr/app/dist ./dist
 COPY --from=builder /usr/app/prisma ./prisma
 
 EXPOSE 3333
+EXPOSE 8080
 
 CMD ["npm", "run", "prod:migrate:start"]
