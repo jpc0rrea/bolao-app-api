@@ -51,10 +51,8 @@ app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
   });
 });
 
-app.listen(process.env.ENVIRONMENT === 'dev' ? 3333 : 8080, () => {
-  return console.log(
-    `🚀 Server started on port ${
-      process.env.ENVIRONMENT === 'dev' ? 3333 : 8080
-    }!`,
-  );
+const port = process.env.PORT || 8080;
+
+app.listen(port, () => {
+  return console.log(`🚀 Server started on port ${port}!`);
 });
